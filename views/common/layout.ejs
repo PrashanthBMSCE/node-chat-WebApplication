@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+    <span>
+        <% console.log(success_msg) %>
+        <%if (success_msg.length!=0) { %>
+
+        <div class="alert alert-success" id="success-alert">
+            <%=success_msg%>
+        </div>
+
+        <% } %>
+
+        <%if (error_msg.length!=0) { %>
+        <div class="alert alert-danger" id="danger-alert">
+            <%=error_msg%>
+        </div>
+        <% } %>
+    </span>
+
+
+</body>
+
+</html>
