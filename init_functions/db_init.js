@@ -1,8 +1,9 @@
 var mongoose = require("mongoose");
+require('dotenv').config();
 
 
 mongoose.connect(
-    "mongodb://localhost:27017/chat_app",
+    process.env.MONGODB_CONN_URL,
     { useNewUrlParser: true }
 );
 var db = mongoose.connection;
