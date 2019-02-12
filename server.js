@@ -1,3 +1,4 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var session = require('express-session');
@@ -6,7 +7,6 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const socketIO = require('socket.io');
 const http = require('http');
-require('dotenv').config();
 
 const { generateMessage, generateLocationMessage, generateImage } = require('./utils/message');
 const { Users } = require('./utils/user');
