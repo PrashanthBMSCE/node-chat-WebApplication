@@ -14,7 +14,8 @@ app.get('/', function (req, res) {
         res.redirect('/login')
     }
 })
-app.post('/api/login', function (req, res) {
+
+app.post('/login', function (req, res) {
     var loginCreds = {
         emailid: req.body.emailid,
         password: req.body.password
@@ -51,7 +52,7 @@ app.get('/register', function (req, res) {
 
 })
 
-app.post('/api/register', function (req, res) {
+app.post('/register', function (req, res) {
     //  console.log('req.body', req.body);
     var registrationDetails = {
         firstname: req.body.firstName,
