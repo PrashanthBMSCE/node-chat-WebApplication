@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './public')));
 
 console.log("port", process.env.PASSWORD)
-
+const port = process.env.port || 5000;
 
 app.use(session({
     secret: 'secret',
@@ -40,12 +40,6 @@ app.use(function (req, res, next) {
     next();
 })
 
-app.get('/', (req, res) => {
-    res.send([{
-        name: 'prashant',
-        mail: 'prashant.puh@gmail.com'
-    }])
-})
 
 module.exports = app;
 require('./init_functions');
@@ -113,6 +107,6 @@ io.on('connection', (socket) => {
 
 
 
-server.listen(5000, () => {
+server.listen(port, () => {
     console.log('port is on 5000')
 })

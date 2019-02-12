@@ -6,6 +6,14 @@ app.get('/login', function (req, res) {
     res.render('login');
 })
 
+
+app.get('/', function (req, res) {
+    if (req.session.user) {
+        res.redirect('chat')
+    } else {
+        res.redirect('/login')
+    }
+})
 app.post('/api/login', function (req, res) {
     var loginCreds = {
         emailid: req.body.emailid,
