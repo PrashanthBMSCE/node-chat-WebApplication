@@ -21,6 +21,7 @@ app.post('/api/login', function (req, res) {
     }
     Auth.logIn(loginCreds)
         .then(user => {
+            console.log('user');
             req.session.user = user
             res.redirect('/chat')
             // req.flash("success_msg", "successfully logged in");
@@ -28,6 +29,7 @@ app.post('/api/login', function (req, res) {
 
         })
         .catch(err => {
+            console.log('error', err);
             req.flash("error_msg", err.message);
             res.redirect(req.get("referer"));
         })
