@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './public')));
 
 console.log("port", process.env.PASSWORD)
-//const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 app.use(session({
     secret: 'secret',
@@ -107,6 +107,6 @@ io.on('connection', (socket) => {
 
 
 
-server.listen(5000, () => {
+server.listen(port, () => {
     console.log('port is on 5000')
 })
