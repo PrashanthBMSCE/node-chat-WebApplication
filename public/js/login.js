@@ -3,7 +3,6 @@
 $(document).ready(function () {
     //  console.log('hhhhhhhhhh', $(".fab fa-facebook-square"))
 
-    console.log('user', userId);
     $("#fblogin").click(function () {
         window.fbAsyncInit = function () {
             FB.init({
