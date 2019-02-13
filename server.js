@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
     res.locals.error_msg = req.flash('error_msg');
     next();
 })
-
+console.log('__dirname', __dirname);
 
 module.exports = app;
 require('./init_functions');
