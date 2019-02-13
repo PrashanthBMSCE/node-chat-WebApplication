@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     //  console.log('hhhhhhhhhh', $(".fab fa-facebook-square"))
-
+    console.log('FBID', FBID);
     $("#fblogin").click(function () {
         window.fbAsyncInit = function () {
             FB.init({
