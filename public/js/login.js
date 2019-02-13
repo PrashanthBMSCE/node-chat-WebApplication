@@ -21,9 +21,21 @@ $(document).ready(function () {
         function statusChangeCallback(response) {
             if (response.status === 'connected') {
                 console.log('already have an account');
-            } else {
                 fblogin()
+            } else {
+                FB.login(
+                    function (response) {
+                        // handle the response
+                        if (response.status === "connected") {
+                            console.log("yes");
+                        } else {
+                            console.log("no");
+                        }
+                    },
+                    { scope: "name,email" }
+                );
             }
+
 
         }
         function fblogin() {
