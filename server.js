@@ -82,6 +82,13 @@ io.on('connection', (socket) => {
         }
         callback('this is from server')
     })
+    socket.on('selectImage', (image) => {
+        //console.log('image', image);
+        var user = users.getUser(socket.id);
+        if (user) {
+            io.to(user.room).emit('sendImage', generateImage(user.name, image));
+        }
+    })
 
     socket.on('disconnect', () => {
         var user = users.removeUser(socket.id);

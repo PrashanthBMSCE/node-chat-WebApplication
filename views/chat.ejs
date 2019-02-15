@@ -26,7 +26,10 @@
                 <br>
                 <button id='send-location'>sendLocation</button>
                 <br>
-                <!-- <input type='file' name='file' id='selectfile' onchange="readURL(this);" accept="image/*"> -->
+                <div class="upload-btn-wrapper">
+                <button class="btn">sendImage</button>
+                <input type="file" name="file" id='imagefile'  accept="image/*" />
+               </div>
         </div>
     </div>
 
@@ -63,11 +66,11 @@
     <span>{{createdAt}}</span>
     </div>
     <div class="message__body">
-    <p><img id="blah" src="{{url}}" alt="your image" /></p>
+    <a  href="{{href}}" download><img id="blah" src="{{url}}" alt="your image" style="height:100px; width150px"/></a>
     </div>
     </li> 
     </script>
-    </body>
+
 
 
     <script src='/lib/moment.js'></script>
@@ -150,6 +153,32 @@ jQuery('#message-form').on('submit', function (e) {
     })
 
 })
+$(function () {
+    $("#imagefile").on('change', function (e) {
+        var file = e.originalEvent.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (evt) {
+            socket.emit('selectImage', evt.target.result);
+
+        }
+        reader.readAsDataURL(file);
+    })
+})
+socket.on('sendImage', function (image) {
+    console.log('image', image);
+    var formatedTime = moment(Date.now()).format('h:mm a');
+    var template = jQuery('#image-message-template').html();
+    var html = Mustache.render(template, {
+        from: image.from,
+        url: `${image.image}`,
+        href: `${image.image}`,
+        createdAt: formatedTime
+
+    })
+    jQuery('#messages').append(html);
+    scrollToBottom();
+})
+
 
 var locationButton = jQuery('#send-location');
 locationButton.on('click', function () {

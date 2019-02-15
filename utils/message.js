@@ -21,7 +21,7 @@ var generateLocationMessage = (from, latitude, longitude) => {
 var generateImage = (from, image) => {
     return {
         from,
-        image: image.image,
+        image: image,
         createdAt: moment.valueOf()
     }
 }
