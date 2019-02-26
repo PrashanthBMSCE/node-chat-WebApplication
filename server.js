@@ -77,10 +77,8 @@ io.on('connection', (socket) => {
         if (user && isRealString(message.text)) {
             var msg = generateMessage(user.name, message.text)
             io.to(user.room).emit('newMessage', msg);
-            socket.handshake.session.user.messages.push(msg)
-            console.log('messages', socket.handshake.session.user.messages)
         }
-        callback('this is from server')
+        callback()
     })
     socket.on('selectImage', (image) => {
         //console.log('image', image);
@@ -117,3 +115,5 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
     console.log('port is on 5000')
 })
+
+

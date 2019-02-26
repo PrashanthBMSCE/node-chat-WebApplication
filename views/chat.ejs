@@ -78,7 +78,7 @@
     <script src='/lib/deparam.js'></script>
    
     <script>
-
+    var room="<%=room%>"||jQuery.deparam(window.location.search).room
     var name=`<%=userName%>`
          var socket = io();
 
@@ -104,7 +104,8 @@ function scrollToBottom() {
         }
         socket.on('connect', function () {
    // var params = jQuery.deparam(window.location.search);
-    socket.emit('join',{name:name,room:jQuery.deparam(window.location.search).room}, function (err) {
+       
+    socket.emit('join',{name:name,room:room}, function (err) {
         if (err) {
             alert(err)
             window.location.href = '/'
@@ -148,7 +149,7 @@ jQuery('#message-form').on('submit', function (e) {
     socket.emit('createMessage', {
         text: jQuery('[name=message]').val()
     }, function () {
-        jQuery('[name=message]').val('')
+        jQuery('[name=message]').val(' ')
 
     })
 
